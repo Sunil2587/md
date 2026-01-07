@@ -1,69 +1,100 @@
-# MindCare - Mental Health Analysis
+# MindCare - Mental Health Analysis Dashboard
 
-A production-ready AI-powered mental health analysis application.
+AI-powered mental health self-reflection tool that analyzes your journal entries and provides wellness insights with actionable recovery guides.
 
-## 🚀 Quick Start
+## Features
 
-### Local Development
+- **Wellness Score** - Overall mental health score (0-100%)
+- **Pattern Analysis** - Radar chart showing emotional patterns
+- **Smart Detection** - Identifies hopelessness, sadness, anxiety, isolation, fatigue, sleep issues
+- **Recovery Guides** - 5 actionable tips for each detected issue
+- **Beautiful UI** - Modern dark theme with SVG icons
+
+## Quick Start
+
+### 1. Clone the Repository
+
 ```bash
-# Install dependencies
-pip install -r requirements.txt
+git clone https://github.com/Sunil2587/md.git
+cd md
+```
 
-# Run the dashboard
+### 2. Create Virtual Environment (Recommended)
+
+**Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**Mac/Linux:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Dashboard
+
+```bash
 streamlit run mp_rds/dashboard/app.py
 ```
 
-### Docker Deployment
-```bash
-# Build and run with Docker Compose
-docker-compose up -d
+The dashboard will open at: **http://localhost:8501**
 
-# Access:
-# - Dashboard: http://localhost:8501
-# - API: http://localhost:8000
+## How to Use
+
+1. Open the dashboard in your browser
+2. Paste your journal entries or thoughts in the text area (one per line)
+3. Click **"Analyze My Wellbeing"**
+4. View your wellness score, pattern analysis, and personalized recovery tips
+
+## Project Structure
+
 ```
-
-## ☁️ Cloud Deployment
-
-### Option 1: Streamlit Cloud (Recommended - Free)
-1. Push this code to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your GitHub repo
-4. Set main file: `mp_rds/dashboard/app.py`
-5. Deploy!
-
-### Option 2: Railway
-1. Push to GitHub
-2. Go to [railway.app](https://railway.app)
-3. Create new project from GitHub
-4. Deploy automatically
-
-### Option 3: Heroku
-```bash
-heroku create your-app-name
-git push heroku main
-```
-
-### Option 4: Docker (Any Cloud)
-```bash
-docker build -t mindcare .
-docker run -p 8501:8501 mindcare streamlit run mp_rds/dashboard/app.py
-```
-
-## 📁 Project Structure
-```
+md/
 ├── mp_rds/
-│   ├── dashboard/app.py    # Main Streamlit app
-│   ├── api/server.py       # FastAPI backend
+│   ├── dashboard/
+│   │   └── app.py          # Main Streamlit dashboard
+│   ├── api/
+│   │   └── server.py       # FastAPI REST API
 │   ├── features/           # ML feature extraction
-│   └── models/             # Transformer model
-├── Dockerfile
-├── docker-compose.yml
-├── Procfile               # For Heroku/Railway
+│   ├── models/             # Transformer model & RDS engine
+│   └── config/             # Configuration settings
 ├── requirements.txt
-└── .streamlit/config.toml
+└── README.md
 ```
 
-## ⚠️ Disclaimer
-This tool is for self-reflection only and is NOT a medical diagnosis.
-Please consult a mental health professional for proper evaluation.
+## Requirements
+
+- Python 3.9+
+- Streamlit
+- Plotly
+- NumPy
+
+## API Usage (Optional)
+
+Run the API server:
+```bash
+uvicorn mp_rds.api.server:app --host 0.0.0.0 --port 8000
+```
+
+API Docs: **http://localhost:8000/docs**
+
+## Disclaimer
+
+This tool is for **self-reflection only** and is NOT a medical diagnosis. If you're struggling with mental health, please consult a professional.
+
+**Crisis Helplines:**
+- India: iCall 9152987821
+- USA: 988 Lifeline
+- International: findahelpline.com
+
+## License
+
+MIT License
